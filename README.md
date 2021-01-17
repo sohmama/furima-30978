@@ -16,8 +16,8 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :transactions
-- has_one :item_purchases
+- has_one :delivery_destinations
+- has_many :item_purchases
 
 ## items テーブル
 
@@ -36,7 +36,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_one :transaction
+- has_one :item_purchases
 
 ## comments テーブル
 
