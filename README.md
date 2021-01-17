@@ -2,31 +2,36 @@
 
 ## users テーブル
 
-| column        | Type   | Options     |
-| ------------- | ------ | ----------- |
-| nickname      | string | null: false |
-| email         | string | null: false | 
-| password      | string | null: false |
-| name          | string | null: false |
-| furigana      | string | null: false |
-| date_of_birth | string | null: false |
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false | 
+| encrypted_password  | string | null: false |
+| first_name          | string | null: false |
+| last_name           | string | null: false |
+| first_name_furigana | string | null: false |
+| last_name_furigana  | string | null: false |
+| date_of_birth       | date   | null: false |
 
 ### Association
 - has_many :items
 - has_many :comments
 - has_many :transactions
+- has_one :item_purchases
 
 ## items テーブル
 
-| column        | Type      | Options                        |
-| ------------- | --------- | ------------------------------ |
-| user_id       | reference | null: false, foreign_key: true |
-| image         |           | null: false                    |
-| category      |           | null: false                    |
-| condition     |           | null: false                    |
-| delivery_cost |           | null: false                    |
-| delivery_from |           | null: false                    |
-| delivery_days |           | null: false                    |
+| Column           | Type      | Options                        |
+| ---------------- | --------- | ------------------------------ |
+| user             | reference | null: false, foreign_key: true |
+| name             | string    | null: false                    |
+| introduction     | text      | null: false                    |
+| category_id      | integer   | null: false                    |
+| condition_id     | integer   | null: false                    |
+| delivery_cost_id | integer   | null: false                    |
+| delivery_from_id | integer   | null: false                    |
+| delivery_days_id | integer   | null: false                    |
+| price            | integer   | null: false                    |
 
 ### Association
 - belongs_to :user
@@ -35,23 +40,35 @@
 
 ## comments テーブル
 
-｜column  | Type      | Options                        |
+｜Column  | Type      | Options                        |
 | ------  | --------- | ------------------------------ |
-| user_id | reference | null: false, foreign_key: true |
+| user    | reference | null: false, foreign_key: true |
 | text    | text      | null: false                    |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
 
-## transactions テーブル
+## delivery_destinations テーブル
 
-| column     | Type      | Options                        |
-| -----------| --------- | ------------------------------ |
-| user_id    | reference | null: false, foreign_key :true |
-| address    | text      | null: false                    |
-| tel        | string    | null: false                    |
+| Column      | Type      | Options                        |
+| ------------| --------- | ------------------------------ |
+| user        | reference | null: false, foreign_key: true |            
+| postal_code | integer   | null: false                    |
+| address     | text      | null: false                    |
+| tel         | string    | null: false                    |
 
 ### Association
+- belongs_to :user
+- belongs_to :item
+
+## item_purchases テーブル
+
+| Column | Type      | Options                        |
+| ------ | --------- | ------------------------------ |
+| user   | reference | null: false, foreign_key: true |
+| item   | reference | null: false, foreign_key: true |       
+
+### Association 
 - belongs_to :user
 - belongs_to :item
