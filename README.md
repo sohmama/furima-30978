@@ -2,21 +2,20 @@
 
 ## users テーブル
 
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| nickname            | string | null: false |
-| email               | string | null: false | 
-| encrypted_password  | string | null: false |
-| first_name          | string | null: false |
-| last_name           | string | null: false |
-| first_name_furigana | string | null: false |
-| last_name_furigana  | string | null: false |
-| date_of_birth       | date   | null: false |
+| Column              | Type   | Options                   |
+| ------------------- | ------ | ------------------------- |
+| nickname            | string | null: false               |
+| email               | string | null: false, unique: true | 
+| encrypted_password  | string | null: false               |
+| first_name          | string | null: false               |
+| last_name           | string | null: false               |
+| first_name_furigana | string | null: false               |
+| last_name_furigana  | string | null: false               |
+| date_of_birth       | date   | null: false               |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_one :delivery_destinations
 - has_many :item_purchases
 
 ## items テーブル
@@ -36,7 +35,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_one :item_purchases
+- has_one :item_purchase
 
 ## comments テーブル
 
@@ -51,15 +50,18 @@
 
 ## delivery_destinations テーブル
 
-| Column      | Type      | Options                        |
-| ------------| --------- | ------------------------------ |
-| user        | reference | null: false, foreign_key: true |            
-| postal_code | integer   | null: false                    |
-| address     | text      | null: false                    |
-| tel         | string    | null: false                    |
+| Column        | Type      | Options                        |
+| --------------| --------- | ------------------------------ |
+| user          | reference | null: false, foreign_key: true |            
+| postal_code   | integer   | null: false                    |
+| prefecture_id | integer   | null: false                    | 
+| municipality  | string    | null: false                    |
+| address       | string    | null: false                    |
+| building      | string    |                                |
+| tel           | integer   | null: false                    |
 
 ### Association
-- belongs_to :user
+- has_many :item_purchases
 - belongs_to :item
 
 ## item_purchases テーブル
@@ -72,3 +74,4 @@
 ### Association 
 - belongs_to :user
 - belongs_to :item
+- has_one: delivery_destination
