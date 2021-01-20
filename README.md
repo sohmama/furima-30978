@@ -53,7 +53,7 @@
 | Column        | Type      | Options                        |
 | --------------| --------- | ------------------------------ |
 | item_purchase | reference | null: false, foreign_key: true |            
-| postal_code   | integer   | null: false                    |
+| postal_code   | string    | null: false                    |
 | prefecture_id | integer   | null: false                    | 
 | municipality  | string    | null: false                    |
 | address       | string    | null: false                    |
