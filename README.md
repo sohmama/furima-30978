@@ -28,7 +28,7 @@
 | category_id      | integer   | null: false                    |
 | condition_id     | integer   | null: false                    |
 | delivery_cost_id | integer   | null: false                    |
-| delivery_from_id | integer   | null: false                    |
+| prefecture_id    | integer   | null: false                    |
 | delivery_days_id | integer   | null: false                    |
 | price            | integer   | null: false                    |
 
@@ -52,17 +52,16 @@
 
 | Column        | Type      | Options                        |
 | --------------| --------- | ------------------------------ |
-| user          | reference | null: false, foreign_key: true |            
+| item_purchase | reference | null: false, foreign_key: true |            
 | postal_code   | integer   | null: false                    |
 | prefecture_id | integer   | null: false                    | 
 | municipality  | string    | null: false                    |
 | address       | string    | null: false                    |
 | building      | string    |                                |
-| tel           | integer   | null: false                    |
+| tel           | string    | null: false                    |
 
 ### Association
-- has_many :item_purchases
-- belongs_to :item
+- has_one :item_purchase
 
 ## item_purchases テーブル
 
