@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+<<<<<<< Updated upstream
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
@@ -19,4 +20,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name_furigana])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:date_of_birth])
   end
+=======
+  
+>>>>>>> Stashed changes
 end
