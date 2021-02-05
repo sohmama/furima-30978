@@ -6,11 +6,11 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品' do
-  context '商品出品ができる場合' do
+   context '商品出品ができる場合' do
     it 'image, name, introduction, category, condition, delivery_cost, prefecture, delivery_days, priceがあれば商品出品できること' do
-    expect(@item).to be_valid
+     expect(@item).to be_valid
     end
-  end
+   end
 
    context '商品出品ができない場合' do
     it 'imageが添付されていないと登録できない' do
