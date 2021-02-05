@@ -104,19 +104,19 @@ RSpec.describe Item, type: :model do
     end
 
     it 'priceが全角文字では登録できない' do
-      @item.price = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
+      @item.price = "あああ"
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
     it 'priceが半角英数混合では登録できない' do
-      @item.price = /\A[a-z0-9]+\z/
+      @item.price = "123a"
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
     it 'priceが半角英語では登録できない' do
-      @item.price = /\A[a-z]+\z/
+      @item.price = "aaa"
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
