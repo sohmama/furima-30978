@@ -7,7 +7,7 @@ RSpec.describe UserPurchase, type: :model do
 
   describe '#create' do
     context '商品購入ができる場合' do
-      it 'postal_code, prefecture_id, municipality, address, telがあれば商品購入できること' do
+      it 'token, postal_code, prefecture_id, municipality, address, telがあれば商品購入できること' do
         expect(@user_purchase).to be_valid
       end
 
@@ -18,6 +18,12 @@ RSpec.describe UserPurchase, type: :model do
     end
 
     context '商品購入ができない場合' do
+      it 'tokenが空では購入できない' do
+        @user_purchase.token = nil
+        @user_purchase.valid?
+        expect(@user_purchase.errors.full_messages).to include("Token can't be blank")
+      end
+
       it 'postal_codeが空では購入できない' do
         @user_purchase.postal_code = ""
         @user_purchase.valid?
