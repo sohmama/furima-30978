@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @user_purchase = UserPurchase.new(purchase_params)
+   @user_purchase = UserPurchase.new(purchase_params)
     @item = Item.find(params[:item_id])
     if @user_purchase.valid? 
        pay_item
