@@ -3,17 +3,11 @@ class OrdersController < ApplicationController
   before_action :login_user
 
   def index
-    @item = Item.find(params[:item_id])
-    @user_purchase = UserPurchase.new
-  end
-
-  def new
     @user_purchase = UserPurchase.new
   end
 
   def create
    @user_purchase = UserPurchase.new(purchase_params)
-    @item = Item.find(params[:item_id])
     if @user_purchase.valid? 
        pay_item
        @user_purchase.save
