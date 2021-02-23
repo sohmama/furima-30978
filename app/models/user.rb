@@ -5,9 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
-  has_many :comments
-  has_many :item_purchases
+  # has_many :items
+  # has_many :comments
+  # has_many :item_purchases
 
   with_options presence: true do
     validates :nickname     
