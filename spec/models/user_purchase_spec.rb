@@ -7,7 +7,7 @@ RSpec.describe UserPurchase, type: :model do
 
   describe '#create' do
     context '商品購入ができる場合' do
-      it 'user_id, item_id, token, postal_code, prefecture_id, municipality, address, telがあれば商品購入できること' do
+      it 'token,user_id, item_id, token, postal_code, prefecture_id, municipality, address, telがあれば商品購入できること' do
         expect(@user_purchase).to be_valid
       end
 
